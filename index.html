@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Downloader</title>
+    <title>Medya İndirici</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         body { background: #0b0f19; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
@@ -13,8 +13,8 @@
         input:focus { border-color: #38bdf8; }
         button { width: 100%; padding: 14px; border-radius: 10px; border: none; background: #0284c7; color: #ffffff; font-weight: 600; font-size: 16px; cursor: pointer; transition: background 0.2s; }
         button:hover { background: #0369a1; }
-        #status { margin-top: 20px; font-size: 14px; min-height: 24px; }
-        a.download-btn { display: inline-block; padding: 12px 24px; background: #22c55e; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: 600; transition: background 0.2s; }
+        #status { margin-top: 20px; font-size: 14px; min-height: 24px; word-break: break-all; }
+        a.download-btn { display: inline-block; padding: 12px 24px; background: #22c55e; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: 600; transition: background 0.2s; margin-top: 10px; }
         a.download-btn:hover { background: #16a34a; }
         .error { color: #f87171; }
         .loading { color: #94a3b8; }
@@ -43,6 +43,7 @@
         status.innerHTML = '<span class="loading">İşleniyor, lütfen bekleyin...</span>';
 
         try {
+            // İsteği doğrudan kendi Vercel Backend sunucumuza gönderiyoruz
             const response = await fetch('https://video-downloader-vercel-ten.vercel.app/api/download', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
